@@ -6,7 +6,7 @@ RSpec.describe 'Subscription API' do
     @tea_1 = Tea.create!(title: 'Earl Grey', description: 'Tea, Earl Grey, Hot.', temperature: 190, brew_time: 30)
   end
 
-  describe 'new' do
+  describe 'create' do
     it 'creates a new subscription' do
       subscription_payload = {
         title: 'Earl Greytness',
@@ -37,6 +37,18 @@ RSpec.describe 'Subscription API' do
       response_body = JSON.parse(response.body, symbolize_names: true)
 
       expect(response_body[:errors][:messages]).to eq(["Price can't be blank", "Status can't be blank"])
+    end
+  end
+
+  describe 'destroy' do
+    it 'deletes a given subscription' do
+      sub_1 = @customer_1.subscriptions.create(title: 'Earl Greytness', price: 5.33, status: 0, frequency: 0, tea_id: @tea_1.id)
+
+      delete "/api/v1/subscriptions/#{sub_1.id}"
+
+      response_body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_body[:message]).to eq('Subscription has been successfully deleted.')
     end
   end
 end

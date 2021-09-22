@@ -9,6 +9,14 @@ class Api::V1::SubscriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    sub = Subscription.find(params[:id])
+
+    sub.delete
+
+    render json: SubscriptionSerializer.deleted_subscription
+  end
+
   private
   def subscription_payload
     JSON.parse(request.body.read, symbolize_names: true)

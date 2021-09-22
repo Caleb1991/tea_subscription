@@ -23,4 +23,20 @@ class SubscriptionSerializer
       }
     }
   end
+
+  def self.deleted_subscription
+    {
+      type: 'subscription',
+      id: nil,
+      message: 'Subscription has been successfully deleted.'
+    }
+  end
+
+  def self.subscription_not_found
+    {
+      type: 'subscription',
+      id: nil,
+      message: 'Subscription not found'
+    }
+  end
 end
