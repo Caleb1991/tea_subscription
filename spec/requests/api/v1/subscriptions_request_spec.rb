@@ -10,7 +10,7 @@ RSpec.describe 'Subscription API' do
     it 'creates a new subscription' do
       subscription_payload = {
         title: 'Earl Greytness',
-        price: 5.22,
+        price: 5.11,
         status: 0,
         frequency: 0,
         customer_id: @customer_1.id,
@@ -22,6 +22,21 @@ RSpec.describe 'Subscription API' do
       response_body = JSON.parse(response.body, symbolize_names: true)
 
       expect(response_body[:details][:title]).to eq(subscription_payload[:title])
+    end
+
+    it 'sends back error messages' do
+      subscription_payload = {
+        title: 'Earl Greytness',
+        frequency: 0,
+        customer_id: @customer_1.id,
+        tea_id: @tea_1.id
+      }
+
+      post '/api/v1/subscriptions', params: subscription_payload, as: :json
+
+      response_body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_body[:errors][:messages]).to eq(["Price can't be blank", "Status can't be blank"])
     end
   end
 end

@@ -13,4 +13,14 @@ class SubscriptionSerializer
       }
     }
   end
+
+  def self.error_messages(failed_subscription)
+    {
+      type: 'subscription',
+      id: nil,
+      errors: {
+        messages: failed_subscription.errors.full_messages
+      }
+    }
+  end
 end

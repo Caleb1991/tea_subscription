@@ -1,11 +1,11 @@
 class Api::V1::SubscriptionsController < ApplicationController
   def create
-    new_sub = Subscription.create!(subscription_payload)
+    new_sub = Subscription.create(subscription_payload)
 
-    if new_sub
+    if new_sub.save
       render json: SubscriptionSerializer.subscription_details(new_sub)
     else
-      render json: new_sub.errors.full_messages, status: 400
+      render json: SubscriptionSerializer.error_messages(new_sub), status: 400
     end
   end
 
