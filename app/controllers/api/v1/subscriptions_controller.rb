@@ -9,6 +9,14 @@ class Api::V1::SubscriptionsController < ApplicationController
     end
   end
 
+  def update
+    subscription = Subscription.find(params[:id])
+
+    updated_sub = subscription.update(subscription_payload)
+
+    render json: SubscriptionSerializer.subscription_details(subscription)
+  end
+
   def destroy
     sub = Subscription.find(params[:id])
 

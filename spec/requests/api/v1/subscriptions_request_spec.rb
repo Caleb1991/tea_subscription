@@ -51,4 +51,18 @@ RSpec.describe 'Subscription API' do
       expect(response_body[:message]).to eq('Subscription has been successfully deleted.')
     end
   end
+
+  describe 'update' do
+    it 'updates a given subscription' do
+      sub_1 = @customer_1.subscriptions.create(title: 'Earl Greytness', price: 5.33, status: 0, frequency: 0, tea_id: @tea_1.id)
+
+      updates = {status: 2}
+
+      patch "/api/v1/subscriptions/#{sub_1.id}", params: updates, as: :json
+
+      response_body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_body[:details][:status]).to eq('cancelled')
+    end
+  end
 end
