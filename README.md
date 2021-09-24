@@ -17,4 +17,6 @@ Run rails db:{create,migrate}
 
 ## Requests and Responses
 
-`get "https:://api/v1/customers/1"`
+`get "https:://api/v1/customers/2"`
+
+<img width="450" alt="Screen Shot 2021-09-24 at 8 08 06 AM" src="https://user-images.githubusercontent.com/78196294/134688328-a9d4e755-b08a-443a-853b-8f2c811597e5.png">
