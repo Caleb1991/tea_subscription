@@ -7,8 +7,8 @@ Ruby on Rails </br>
 RSpec
 
 ## Setup
-Clone down this repo.
-Run bundle install via command line.
+Clone down this repo. </br>
+Run bundle install via command line. </br>
 Run rails db:{create,migrate}
 
 ## Schema
