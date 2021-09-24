@@ -1,24 +1,15 @@
-# README
+# Tea Time
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tea Time is an API that that leverages the power of Rails to allow a user to create a tea subscription, cancel a tea subscription, as well as see all the subscriptions for a given user.
 
-Things you may want to cover:
+## Technologies
+Ruby on Rails
+RSpec
 
-* Ruby version
+## Setup
+Clone down this repo.
+Run bundle install via command line.
+Run rails db:{create,migrate}
 
-* System dependencies
+## Schema
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
